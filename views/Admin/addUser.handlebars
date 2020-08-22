@@ -1,0 +1,65 @@
+                  <div class="form-container">
+
+                        <div>
+                            <h1>Sign Up</h1>    
+                        </div>
+                        <form action="/admin/adduser"  method="POST">
+
+                            <div class="form-control">     
+                    
+                                <label for="firstName">Enter First Name</label>
+                                <input type="text" id="firstName" name="firstName" value={{user.firstName}}>
+                                <div class="error">{{errors.firstName}}</div>  
+                    
+                            </div>
+                    
+                            <div class="form-control">  
+                                  
+                                <label for="lastName">Enter Last Name</label>
+                                <input type="text" id="lastName" name="lastName" value={{user.lastName}}> 
+                                <div class="error">{{errors.lastName}}</div>  
+                            </div> 
+
+                            <div class="form-control">  
+                                  
+                                <label>Gender</label>
+
+                                Male
+                                <input type="radio" {{#ifEq user.gender "Male" }} checked  {{/ifEq}} id="male" name="gender" value="Male"> 
+
+                               Female
+                                <input type="radio" id="female"  {{#ifEq user.gender "Female" }} checked  {{/ifEq}} name="gender" value="Female"> 
+                                <div class="error">{{errors.gender}}</div>  
+                            </div> 
+                    
+                            <div class="form-control">   
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" value={{user.email}}>  
+                                <div class="error">{{errors.email}}</div>           
+                                </div> 
+                    
+                            <div class="form-control">    
+                                <label for="username">Username </label>
+                                <input type="text" id="username" name="username" value={{user.username}}>
+                                <div class="error">{{errors.username}}</div>  
+                            </div> 
+                    
+                            <div class="form-control">    
+                                <label for="username">Password </label>
+                                <input type="password" id="password" name="password" value={{user.password}}>
+                                <div class="error">{{errors.password}}</div>  
+                            </div> 
+                    
+                            <div class="form-control">    
+                                <label for="cpassword">Confirm Password </label>
+                                <input type="password" id="cpassword" name="cpassword">
+                                <div class="error">{{errors.cPassword}}</div>  
+                            </div> 
+                    
+                            <div class="form-control">
+                                <input type="submit" value="Register" class="btn">         
+                            </div>
+                    
+                        </form>
+    
+                    </div>
