@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/phone.css" media="(max-width:575.99px)">
     <title>Task Managment App | {{title}}</title>
 </head>
-<body>
+<body  id="{{pageID}}">
         <header>
                 <div class="container">
                     <nav>
@@ -20,6 +20,7 @@
                            
                                 {{#ifEq userInfo.role "User"}}
 
+                                  <li><a href="/user/profile">My Profile</a></li>
                                   <li><a href="/task/dashboard">Task Dashboard</a></li>
                                   <li><a href="/auth/logout">Logout</a></li>
 
@@ -43,6 +44,7 @@
                 </div>
         </header>  
         <main>
+
             <section>
                 <div class="container main-area" >
                         {{{body}}}

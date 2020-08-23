@@ -47,17 +47,13 @@ app.use(express.static("public")); //makes your static assests (css,js, image)
 app.use(bodyParser.urlencoded({ extended: false }))
 
 
-//map controllers to express 
-
-//localhost:3000/conact-us
-
 app.use(httpProcessing);
 
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-     cookie: { secure: false }
+    cookie: {secure: (process.env.ISSECURE == "true")}
   }))
 
 
@@ -66,7 +62,6 @@ app.use(fileUpload());
 app.use((req,res,next)=>{
 
     res.locals.userInfo = req.session.userInfo;
-    req.
     next();
 })
 

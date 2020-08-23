@@ -73,7 +73,56 @@ const taskModel = {
         })
         
         
-    }
+    },
+
+    getATask(taskID)
+    {
+     
+            return new Promise((resolve,reject)=>{
+
+            this.SQL = `SELECT * FROM task WHERE task_id = ?`;
+            db.connection.query(this.SQL,[taskID])
+            .then(([rows, fields])=>{
+
+                const task = new Task();
+
+                if(rows.length > 0)
+                {
+                    task.title = rows[0].title;
+                    task.description = rows[0].description;
+                    task.taskID =  rows[0].task_id;
+                    task.user =  rows[0].user_id;
+                }
+
+        
+                 resolve(task);
+            })
+            .catch(err=>reject(err));
+
+        })
+       
+    },
+
+    
+    updateTask(newTask, taskID)
+    {
+     
+        
+      return new Promise((resolve,reject)=>{
+
+            this.SQL = `UPDATE task SET title = ? , description = ? WHERE task_id = ?`;
+            db.connection.query(this.SQL, [newTask.title,newTask.description,taskID])
+            .then(()=>{
+
+                resolve();
+            })
+            .catch(err=>reject(err));
+
+        })
+        
+        
+    },
+
 
 
 
