@@ -41,7 +41,7 @@ const taskModel = {
                     const task = new Task();
                     task.title = row.title;
                     task.description = row.description;
-                    task.id =  row.task_id;
+                    task.taskID =  row.task_id;
                     task.user =  row.user_id;
             
                     tasks.push(task);
@@ -56,6 +56,24 @@ const taskModel = {
        
     },
 
+    deleteTask(taskID)
+    {
+     
+        
+      return new Promise((resolve,reject)=>{
+
+            this.SQL = `DELETE FROM task Where task_id = ?`;
+            db.connection.query(this.SQL, [taskID])
+            .then(()=>{
+
+                resolve();
+            })
+            .catch(err=>reject(err));
+
+        })
+        
+        
+    }
 
 
 

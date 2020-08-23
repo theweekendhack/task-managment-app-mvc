@@ -71,6 +71,18 @@ router.get("/edit",(req,res)=>{
 });
 
 
+
+router.delete("/delete/:id", (req,res)=>{
+
+    taskModel.deleteTask(req.params.id)
+    .then(()=>{
+        res.redirect("/task/dashboard")
+    })
+    .catch(err=>console.log(`Err ${err}`))
+
+});
+
+
 router.put("/edit",(req,res)=>{
 
     console.log("FormSubmitted")

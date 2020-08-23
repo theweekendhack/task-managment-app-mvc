@@ -60,6 +60,10 @@ router.post("/adduser",auth, authorize(["Admin"]),userAddFormValidation,(req,res
 
 //basedomain.com/admin/delete/:id
 
+//basedomain.com/admin/delete/24
+
+
+//basedomain.com/admin/delete/:id
 router.delete("/delete/:id",auth, authorize(["Admin"]), (req,res)=>{
 
     userModel.deleteUser(req.params.id)
@@ -68,9 +72,10 @@ router.delete("/delete/:id",auth, authorize(["Admin"]), (req,res)=>{
     })
     .catch(err=>console.log(`Err ${err}`))
 
+
+    
+
 });
-
-
 
 
 

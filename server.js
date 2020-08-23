@@ -41,7 +41,7 @@ app.engine('handlebars',helper.engine);
 app.set('view engine', 'handlebars');
 
 //static asset middleware 
-app.use(express.static("public"));
+app.use(express.static("public")); //makes your static assests (css,js, image)
 
 //body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -56,7 +56,8 @@ app.use(httpProcessing);
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+     cookie: { secure: false }
   }))
 
 
@@ -65,6 +66,7 @@ app.use(fileUpload());
 app.use((req,res,next)=>{
 
     res.locals.userInfo = req.session.userInfo;
+    req.
     next();
 })
 

@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 const userModel = require("../models/models/User.js");
 
 
-router.get("/profile",auth,authorize(["User"]),(req,res)=>{
+router.get("/profile",auth,(req,res)=>{
 
     res.render("User/userDashboard",{
         title:"User Profile Page"
